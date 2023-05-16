@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { students } from '../entities/students';
 
 @Component({
   selector: 'app-card',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  students = [
+  students: students[] = [
     {
       hoten: 'Nguyễn Văn Chương',
       gioitinh: 'Nam',
