@@ -2,7 +2,10 @@
   <h1 class="alert-info">Thông tin sinh viên</h1>
   <section class="container mt-5">
     <div>
-      <app-card></app-card>
+      <div class="list_card">
+
+        <app-card *ngFor="let student of students" [card]='student'> </app-card>
+      </div>
     </div>
   </section>
 </div>

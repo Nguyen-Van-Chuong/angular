@@ -1,20 +1,18 @@
-<div class="list_card">
-  <div class="card pt-3 " *ngFor="let student of students">
-    <div class="card-body">
-      <div class="caption">
-        <img src="{{student.anh}}" width="150px" height="150px" class="rounded-circle mb-3" alt="">
-      </div>
-      <h3>John Doe</h3>
-      <h3>{{student.hoten}}</h3>
-      <dd>CEO, co founder</dd>
-      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos totam placeat, nulla nostrum animi</span>
-      <div class="d-flex justify-content-center align-items-center p-3">
-        <button class="btn  rounded-circle mr-2" style="background-color: #0287C1;"><i
-            class="bi bi-linkedin text-white"></i></button>
-        <button class="btn btn-primary rounded-circle mr-2"><i class="bi bi-twitter"></i></button>
-        <button class="btn rounded-circle" style="background-color: #395497;"><i
-            class="bi bi-facebook text-white"></i></button>
-      </div>
+<div class="card pt-3">
+  <div class="card-body">
+    <div class="caption">
+      <img [src]="card.anh" width="150px" height="150px" class="rounded-circle mb-3" alt="">
+    </div>
+    <h3>{{card.hoten}}</h3>
+    <dd>CEO, co founder</dd>
+    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos totam placeat, nulla nostrum animi</span>
+    <div class="d-flex justify-content-center align-items-center p-3">
+      <button class="btn  rounded-circle mr-2" style="background-color: #0287C1;"><i
+          class="bi bi-linkedin text-white"></i></button>
+      <button class="btn btn-primary rounded-circle mr-2"><i class="bi bi-twitter"></i></button>
+      <button class="btn rounded-circle" style="background-color: #395497;"><i
+          class="bi bi-facebook text-white"></i></button>
     </div>
   </div>
+
 </div>

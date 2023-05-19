@@ -9,13 +9,50 @@ import { IProduct } from './entities/product';
 })
 export class AppComponent {
   title = 'lab1';
-  student = {
-    hoten: 'Nguyễn Văn Chương',
-    gioitinh: 'Nam',
-    ngaysinh: '6/1/2003',
-    anh: 'poly.jpeg',
-    diemTB: 8.9,
-  };
+  students = [
+    {
+      hoten: 'Nguyễn Văn Chương',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/07/01/23/web-aliens-2.jpg',
+      diemTB: 8.9,
+    },
+    {
+      hoten: 'Nguyễn Văn Chương2',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://media.newyorker.com/photos/5e4ef70761934700086187b8/1:1/w_1698,h_1698,c_limit/Younger-PopSmoke.jpg',
+      diemTB: 8.9,
+    },
+    {
+      hoten: 'Nguyễn Văn Chương',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://media.newyorker.com/photos/5e4ef70761934700086187b8/1:1/w_1698,h_1698,c_limit/Younger-PopSmoke.jpg',
+      diemTB: 8.9,
+    },
+    {
+      hoten: 'Nguyễn Văn Chương',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://media.newyorker.com/photos/5e4ef70761934700086187b8/1:1/w_1698,h_1698,c_limit/Younger-PopSmoke.jpg',
+      diemTB: 8.9,
+    },
+    {
+      hoten: 'Nguyễn Văn Chương',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://media.newyorker.com/photos/5e4ef70761934700086187b8/1:1/w_1698,h_1698,c_limit/Younger-PopSmoke.jpg',
+      diemTB: 8.9,
+    },
+    {
+      hoten: 'Nguyễn Văn Chương',
+      gioitinh: 'Nam',
+      ngaysinh: '6/1/2003',
+      anh: 'https://media.newyorker.com/photos/5e4ef70761934700086187b8/1:1/w_1698,h_1698,c_limit/Younger-PopSmoke.jpg',
+      diemTB: 8.9,
+    },
+  ];
   inventors: Inventor[] = [
     { id: 1, first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
     { id: 2, first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },

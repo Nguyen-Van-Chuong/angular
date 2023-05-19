@@ -1,4 +1,4 @@
-export interface students {
+export interface Students {
   hoten: string;
   gioitinh: string;
   ngaysinh: string;
