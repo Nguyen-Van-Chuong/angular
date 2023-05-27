@@ -11,6 +11,8 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component';
+import { BannerComponent } from './layouts/banner/banner.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component
     MovieDetailsComponent,
     CommentListComponent,
     PostCardComponent,
-    WatchMovieComponent
+    WatchMovieComponent,
+    BannerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
