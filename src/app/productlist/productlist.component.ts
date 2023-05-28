@@ -74,14 +74,6 @@ export class ProductlistComponent implements OnInit {
     //Add 'implements OnInit' to the class.
     this.listProduct = this.products;
   }
-  // filterValue: string = '';
-  // filter() {
-  //   this.products = this.listProduct.filter((p) =>
-  //     p.productName.toLowerCase().includes(this.filterValue.toLowerCase())
-  //   );
-  // }
-
-  //
   _listFilter: string;
   get listFilter(): string {
     return this._listFilter;
@@ -94,7 +86,6 @@ export class ProductlistComponent implements OnInit {
   }
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
-    // console.log('object');
     return this.listProduct.filter(
       (product: IProduct) =>
         product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
