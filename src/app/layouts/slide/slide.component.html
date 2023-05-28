@@ -1,0 +1,9 @@
+<h1 class="font-Poppins font-semibold text-3xl mt-8 mb-2 uppercase">Trending</h1>
+
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+    <div class="w-full  sm:h-[150px] sm:w-[350px]">
+      <img src="{{ slide.img }}" class="object-cover w-full h-full" alt="" width="100%">
+    </div>
+  </div>
+</ngx-slick-carousel>

@@ -13,6 +13,8 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component';
 import { BannerComponent } from './layouts/banner/banner.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SlideComponent } from './layouts/slide/slide.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
     PostCardComponent,
     WatchMovieComponent,
     BannerComponent,
-    ProfileComponent
+    ProfileComponent,
+    SlideComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, SlickCarouselModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

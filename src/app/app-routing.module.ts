@@ -8,6 +8,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'movie-details', component: MovieDetailsComponent },
   { path: 'post-card', component: PostCardComponent },
   { path: 'movie', component: WatchMovieComponent },
