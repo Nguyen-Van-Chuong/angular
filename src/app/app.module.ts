@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component
 import { BannerComponent } from './layouts/banner/banner.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SlideComponent } from './layouts/slide/slide.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
