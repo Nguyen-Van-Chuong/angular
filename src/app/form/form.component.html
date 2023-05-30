@@ -1,0 +1,17 @@
+<div class="container">
+  <form [formGroup]="profile" (ngSubmit)="onSubmit()">
+    <div class="mb-3 mt-3">
+      <label for="" class="form-label">Color</label>
+      <input type="text" class="form-control" formControlName="color">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="fisrt__name" class="form-label">Fisrt name:</label>
+      <input type="text" class="form-control" formControlName="firstName">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="last__name" class="form-label">last name:</label>
+      <input type="text" class="form-control" formControlName="lastName">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!profile.valid">Submit</button>
+  </form>
+</div>
