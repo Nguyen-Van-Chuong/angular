@@ -7,6 +7,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent {
+  user: any;
+
   profile = new FormGroup({
     color: new FormControl(''),
     firstName: new FormControl(''),
@@ -14,6 +16,7 @@ export class FormComponent {
   });
 
   onSubmit() {
-    console.log(this.profile.value);
+    this.user = this.profile.value;
+    this.profile.reset();
   }
 }

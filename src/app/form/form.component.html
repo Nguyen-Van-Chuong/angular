@@ -15,3 +15,27 @@
     <button type="submit" class="btn btn-primary" [disabled]="!profile.valid">Submit</button>
   </form>
 </div>
+
+
+<div class="container mt-5 py-5" *ngIf="user">
+  <div class="list_card d-flex justify-content-center ">
+    <div class="card pt-3" style="border-style: solid;" [style.borderColor]="user.color">
+      <div class="card-body">
+        <div class="caption">
+          <img src="https://source.unsplash.com/random" width="150px" height="150px" class="rounded-circle mb-3"
+            ngClass="" alt="">
+        </div>
+        <h3>{{user.lastName}} {{user.firstName}}</h3>
+        <dd>CEO, co founder</dd>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos totam placeat, nulla nostrum animi</span>
+        <div class="d-flex justify-content-center align-items-center p-3">
+          <button class="btn  rounded-circle mr-2" style="background-color: #0287C1;"><i
+              class="bi bi-linkedin text-white"></i></button>
+          <button class="btn btn-primary rounded-circle mr-2"><i class="bi bi-twitter"></i></button>
+          <button class="btn rounded-circle" style="background-color: #395497;"><i
+              class="bi bi-facebook text-white"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
