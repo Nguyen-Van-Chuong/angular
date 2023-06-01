@@ -5,13 +5,14 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'movie-details', component: MovieDetailsComponent },
-  { path: 'post-card', component: PostCardComponent },
   { path: 'movie', component: WatchMovieComponent },
+  { path: 'movie-list', component: MovieListComponent },
   { path: 'profile', component: ProfileComponent },
 ];
 

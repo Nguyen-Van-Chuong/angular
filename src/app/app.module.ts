@@ -15,6 +15,7 @@ import { WatchMovieComponent } from './layouts/watch-movie/watch-movie.component
 import { BannerComponent } from './layouts/banner/banner.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SlideComponent } from './layouts/slide/slide.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SlideComponent } from './layouts/slide/slide.component';
     BannerComponent,
     ProfileComponent,
     SlideComponent,
+    MovieListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SlickCarouselModule],
   providers: [],

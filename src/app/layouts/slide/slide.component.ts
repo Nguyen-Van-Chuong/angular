@@ -30,9 +30,9 @@ export class SlideComponent {
   slideConfig = {
     slidesToShow: 4,
     slidesToScroll: 4,
-    autoplay: true,
-    autoplaySpeed: 2000,
-
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    variableWidth: false,
     prevArrow:
       '<div class="absolute top-1/2 mt-[-15px] left-[-30px] text-2xl"><i class="fa-sharp fa-solid fa-arrow-left"></i></div>',
     nextArrow:
@@ -50,7 +50,7 @@ export class SlideComponent {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 700,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
