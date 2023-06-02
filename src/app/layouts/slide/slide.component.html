@@ -5,9 +5,9 @@
 <section class="sm:px-4 py-2">
   <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" class="relative">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide gap-x-1">
-      <a href="#">
+      <a [title]="slide.title" routerLink="/movie-detail/{{slide.id}}">
         <div class="h-[200px] sm:h-[150px] sm:w-[300px] overflow-hidden">
-          <img src="{{ slide.img }}"
+          <img src="https://image.tmdb.org/t/p/original/{{ slide.backdrop_path }}"
             class=" w-full h-full object-cover transition transform duration-500 hover:scale-[1.08] hover:opacity-30"
             alt="" width="100%">
         </div>

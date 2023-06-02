@@ -1,1 +1,45 @@
-<app-watch-movie></app-watch-movie>
+<section class="flex px-4 pt-28 lg:container">
+  <section class="md:basis-4/6 ">
+    <h1 class="font-Inter font-semibold text-3xl mb-8">{{product.title}}</h1>
+    <div class="mb-10 md:w-[90%] w-full">
+      <img src="https://image.tmdb.org/t/p/original/{{product.backdrop_path }}"
+        class="rounded-lg object-cover w-[80%]  h-[250px] md:h-[472px] mr-8" alt="">
+
+    </div>
+
+    <div class="flex mb-10">
+      <img src="https://image.tmdb.org/t/p/original/{{product.poster_path }}"
+        class="rounded-lg object-cover w-[80%] md:w-[270px] h-[379px] mr-8" alt="">
+      <div class="gap-y-3">
+        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl">Type :</h3>
+        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Tv</span>
+        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Status :</h3>
+        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Ongoing</span>
+        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Studios :</h3>
+        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Toei Animation</span>
+        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Duration :</h3>
+        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">24 Min.</span>
+        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Genres :</h3>
+        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Action, Adventure, Fantasy</span>
+      </div>
+    </div>
+    <div class="mb-10 pr-4">
+      <h1 class="font-Inter font-semibold text-xl mb-10">Sypnosis :</h1>
+      <p class="font-Inter font-normal text-base text-[#868686]">{{ product.overview }}</p>
+    </div>
+    <div>
+      <app-comment-list></app-comment-list>
+    </div>
+  </section>
+  <section class="basis-2/6 md:block hidden">
+    <h1 class="font-Inter font-semibold text-3xl mb-8">Popular anime</h1>
+    <div class="grid lg:grid-cols-2 grid-cols-1 lg:gap-3 gap-2">
+      <app-post-card></app-post-card>
+      <app-post-card></app-post-card>
+      <app-post-card></app-post-card>
+      <app-post-card></app-post-card>
+      <app-post-card></app-post-card>
+    </div>
+  </section>
+</section>
+s

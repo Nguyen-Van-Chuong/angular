@@ -8,10 +8,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'movie-details', component: MovieDetailsComponent },
-  { path: 'movie', component: WatchMovieComponent },
+  { path: 'movie-detail/:id', component: MovieDetailsComponent },
   { path: 'movie-list', component: MovieListComponent },
   { path: 'profile', component: ProfileComponent },
 ];

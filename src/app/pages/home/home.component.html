@@ -1,27 +1,21 @@
 <!-- banner -->
-<section class="">
+<section class="mb-8 mt-[-20px]">
   <app-banner></app-banner>
 </section>
 <!-- banner -->
 
 <!-- Popular anime -->
-<section class="">
+<section class="lg:container">
   <h1 class="font-Inter font-semibold text-3xl mt-8 mb-2 uppercase">Popular anime</h1>
   <section class="pl-2.5 pr-2.5 lg:gap-0">
-    <div class="grid lg:gap-3 gap-2 md:grid-cols-4 grid-cols-2 ">
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-    </div>
+    <app-post-card [card]="moviePopular"></app-post-card>
   </section>
 </section>
 <!-- Popular anime -->
 
 <!-- slide trending -->
-<app-slide></app-slide>
+<div class="lg:container">
+  <app-slide [slides]="movieTrending"></app-slide>
+
+</div>
 <!-- slide trending -->

@@ -15,12 +15,13 @@
 
 </div> -->
 <!--  -->
-<div class="group/film relative overflow-hidden">
-  <a routerLink="/movie">
+<div class="grid lg:gap-3 gap-2 md:grid-cols-4 grid-cols-2 ">
+
+
+  <a [routerLink]="['/movie-detail', c.id]" [title]="c.title" class="group/film relative overflow-hidden"
+    *ngFor="let  c of card">
     <img class="w-full h-full lg:group-hover/film:scale-110 duration-300 transition-all"
-      src="https://s199.imacdn.com/vg/2023/05/24/7e1a9312fc34b0a4_e02bb069528fef1b_11399416849132202118684.jpg"
-      data-src="https://s199.imacdn.com/vg/2023/05/24/7e1a9312fc34b0a4_e02bb069528fef1b_11399416849132202118684.jpg"
-      alt="Cô Gái Lầu Dưới">
+      src="https://image.tmdb.org/t/p/original/{{ c.backdrop_path }}" alt="{{c.title}}">
     <div class="absolute bottom-0 w-full h-[100px] text-white 
       bg-gradient-to-b from-transparent to-gray-900
       lg:group-hover/film:to-slate-700 
@@ -30,20 +31,21 @@
       <div class="line-clamp-1
           sm:mb-2 md:mb-1 lg:mb-3
           text-[14px] sm:text-[16px] md:text-[14px] lg:text-[16px] 
-          absolute bottom-4">Cô Gái Lầu Dưới</div>
+          absolute bottom-4">{{c.title}}</div>
       <div class="absolute bottom-1 left-1.5 right-1.5 
           sm:bottom-2 sm:left-3 sm:right-3 
           md:left-1.5 md:right-1.5 md:bottom-1 
           lg:bottom-2 lg:left-3 lg:right-3
           flex justify-between">
-        <span
+        <!-- <span
           class="font-extralight text-[10px] sm:text-[12px] max-w-[38%] sm:max-w-[40%] s640:max-w-[50%] md:max-w-[40%] lg:max-w-none whitespace-nowrap overflow-hidden">
           6 / 22 tập
         </span>
         <span
           class="shrink-0 font-extralight text-[10px] sm:text-[12px] text-ellipsis max-w-[55%] md:max-w-[50%] lg:max-w-none line-clamp-1">9,734
-          lượt xem</span>
+          lượt xem</span> -->
       </div>
     </div>
   </a>
+
 </div>

@@ -8,3 +8,8 @@
 
 font-family: 'Inter', sans-serif;
 font-family: 'Poppins', sans-serif;*/
+
+html {
+  scroll-behavior: smooth;
+  transition: all .2s;
+}
