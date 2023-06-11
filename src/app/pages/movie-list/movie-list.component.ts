@@ -23,7 +23,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute
   ) {}
-
+  activeButton: string = '';
   results: any;
   name: string = '';
   title: string = '';
@@ -45,6 +45,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
   }
 
   getMovieData(page: number, type = 'popular') {
+    this.activeButton = type;
     this.loadingPage();
     this.name = type;
     this.http

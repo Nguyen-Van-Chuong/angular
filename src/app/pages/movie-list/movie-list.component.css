@@ -23,3 +23,7 @@
   background: #e6e6e6;
   border-radius: 4px;
 }
+
+.active {
+  background-color: rgb(3, 35, 78)
+}

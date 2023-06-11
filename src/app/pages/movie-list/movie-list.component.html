@@ -9,28 +9,30 @@
         {{name.split('_').join(" ")}}</h1>
       <div class="flex  md:gap-3 gap-1 text-[clamp(0.5rem,0.396rem_+_0.511vw,0.875rem)]"
         *ngIf="segment == 'movie-list'; else tvList">
-        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-          (click)="getMovieData(1,'popular')">Popular</button>
-        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'top_rated')">Top
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'popular')"
+          [class.active]="activeButton === 'popular'">Popular</button>
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'top_rated')"
+          [class.active]="activeButton === 'top_rated'">Top
           rated</button>
-        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-          (click)="getMovieData(1,'now_playing')">Now
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'now_playing')"
+          [class.active]="activeButton === 'now_playing'">Now
           playing</button>
-        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'upcoming')">Up
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'upcoming')"
+          [class.active]="activeButton === 'upcoming'">Up
           coming</button>
       </div>
       <ng-template #tvList>
         <div class="flex  md:gap-3 gap-1 text-[clamp(0.5rem,0.396rem_+_0.511vw,0.875rem)]">
-          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-            (click)="getMovieData(1,'popular')">popular</button>
-          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-            (click)="getMovieData(1,'top_rated')">Top
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'popular')"
+            [class.active]="activeButton === 'popular'">popular</button>
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'top_rated')"
+            [class.active]="activeButton === 'top_rated'">Top
             rated</button>
-          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-            (click)="getMovieData(1,'airing_today')">Airing
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'airing_today')"
+            [class.active]="activeButton === 'airing_today'">Airing
             today</button>
-          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
-            (click)="getMovieData(1,'on_the_air')">On the air</button>
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'on_the_air')"
+            [class.active]="activeButton === 'on_the_air'">On the air</button>
         </div>
 
       </ng-template>
