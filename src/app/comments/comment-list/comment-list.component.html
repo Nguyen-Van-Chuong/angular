@@ -1,23 +1,38 @@
-  <div class="flex mb-10  pr-4">
+<div class="" *ngIf="reviews.length;else noComment">
+  <div class="flex mb-10  pr-4" *ngFor="let r of reviews">
     <div
       class="mr-5 flex-shrink-0 relative before:absolute before:right-[-30px]  before:rotate-45 before:border-l-[15px] before:border-l-[#1d1e39] before:border-t-[15px] before:border-t-transparent before:border-solid before:top-[15px]">
       <a href="/profile">
-        <img src="https://www.siliconera.com/wp-content/uploads/2022/09/Dragon-Ball-Z-Kakarot.jpg"
+        <img
+          src="{{r.author_details.avatar_path?r.author_details.avatar_path.slice(1):'https://upload.wikimedia.org/wikipedia/vi/5/5e/Itachi_Akatsuki.png' }}"
           class="rounded-full h-[50px] w-[50px] object-cover " alt="">
       </a>
 
     </div>
     <div class="bg-[#1d1e39] overflow-hidden rounded-xl pt-[18px] pr-[30px] pb-[16px] pl-[20px] ">
-      <h6 class="font-Poppins font-semibold"><a href="/profile">Chris Curry</a> - <span
-          class="font-Inter font-extralight">1 Hour ago</span>
+      <h6 class="font-Poppins font-semibold"><a href="/profile">{{r.author}}</a> - <span
+          class="font-Inter font-extralight"> {{getTime(r.created_at)}}</span>
       </h6>
-      <p class="ml-1.5 font-Inter font-normal ">whachikan Just noticed that someone categorized this as belonging to the
-        genre
-        "demons" LOL</p>
+
+      <p #contentReview class="ml-1.5 font-Inter font-normal " [ngClass]="{'line-clamp-3':!r.showFullContent}">
+        {{r.content}}</p>
+      <span class="cursor-pointer"
+        (click)="r.showFullContent = !r.showFullContent">{{ r.showFullContent ? 'Hide' : 'Read more' }}</span>
     </div>
   </div>
 
-  <div class=" pr-4">
+</div>
+<ng-template #noComment>
+  <div class=" text-center">
+    No comment
+  </div>
+</ng-template>
+
+<app-comment-form (Comment)="receiveData($event)"></app-comment-form>
+
+
+<!-- <div class=" pr-4">
+    {{r.content}}
     <h5 class="font-Inter font-semibold text-xl border-l-4 border-indigo-500 pl-2">Your Comment</h5>
     <form action="#" class="py-4">
       <textarea placeholder="Your Comment"
@@ -26,4 +41,4 @@
         Button
       </button>
     </form>
-  </div>
+  </div> -->

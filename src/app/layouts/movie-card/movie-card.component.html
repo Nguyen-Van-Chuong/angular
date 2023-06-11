@@ -1,0 +1,47 @@
+<li>
+  <div class="h-full flex flex-col justify-between group/film">
+
+    <a [title]="movieCards.title || movieCards.name" routerLink="/movie-detail/{{movieCards.id}}">
+
+      <figure class="relative aspect-[2/3] rounded-md overflow-hidden mb-5 ">
+        <img src="https://image.tmdb.org/t/p/original{{movieCards.poster_path}}"
+          class="h-full w-full object-cover group-hover/film:scale-125 duration-300 transition-all"
+          alt="Sonic the Hedgehog 2 movie poster">
+        <div class="absolute bottom-0 w-full h-[300px] text-white 
+            bg-gradient-to-b from-transparent
+            lg:group-hover/film:to-black 
+            py-1 px-1.5 sm:p-3 md:py-1 md:px-1.5 lg:p-3
+            pt-24
+            transition-all">
+        </div>
+      </figure>
+    </a>
+
+    <div class="flex justify-between items-center gap-5 mb-2">
+      <a routerLink="/movie-detail/{{movieCards.id}}">
+        <h3 class="text-base font-bold group-hover/film:text-yellow-400"> {{movieCards.title || movieCards.name}}</h3>
+      </a>
+
+      <time datetime="2022"
+        class="text-sm font-medium text-[yellow]">{{movieCards.release_date || movieCards.first_air_date | date}}</time>
+    </div>
+
+    <div class="flex justify-between items-center gap-[15px]">
+      <div class="border-gray-500 border-solid  text-[yellow] px-2 py-0.5 border-2 text-xs">2K</div>
+      <div class="flex gap-x-[15px]">
+        <div class="flex items-center gap-[5px] text-xs font-medium ">
+          <i class="fa-solid fa-clock text-[yellow]"></i>
+          <time datetime="PT122M">122 min</time>
+        </div>
+
+        <div class="flex items-center gap-[5px] text-xs font-medium">
+          <i class="fa-solid fa-star text-[yellow]"></i>
+          <data>{{movieCards.vote_average}}</data>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</li>
+<!-- <button *ngFor="let page of totalPages" (click)="goToPage(page)">{{ page }}</button> -->

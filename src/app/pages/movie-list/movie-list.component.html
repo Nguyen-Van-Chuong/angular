@@ -1,151 +1,55 @@
 <section class="md:flex pt-28 lg:container">
 
-  <main class=" md:basis-4/6">
-    <h1 class="font-Poppins font-bold text-2xl border-indigo-500 border-l-4 pl-4 mb-[30px]">List movie</h1>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie-detail">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
+  <main class="">
+    <div class="flex items-center sm:justify-between justify-around mb-[30px]">
+      <h1
+        class="font-Poppins font-bold text-[clamp(0.875rem,0.7rem_+_0.86vw,1.5rem)] border-indigo-500 border-l-4 pl-4 uppercase">
+        List
+        {{segment == 'movie-list'? 'Movie':'TV series'}}
+        {{name.split('_').join(" ")}}</h1>
+      <div class="flex  md:gap-3 gap-1 text-[clamp(0.5rem,0.396rem_+_0.511vw,0.875rem)]"
+        *ngIf="segment == 'movie-list'; else tvList">
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+          (click)="getMovieData(1,'popular')">Popular</button>
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'top_rated')">Top
+          rated</button>
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+          (click)="getMovieData(1,'now_playing')">Now
+          playing</button>
+        <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 " (click)="getMovieData(1,'upcoming')">Up
+          coming</button>
       </div>
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
+      <ng-template #tvList>
+        <div class="flex  md:gap-3 gap-1 text-[clamp(0.5rem,0.396rem_+_0.511vw,0.875rem)]">
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+            (click)="getMovieData(1,'popular')">popular</button>
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+            (click)="getMovieData(1,'top_rated')">Top
+            rated</button>
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+            (click)="getMovieData(1,'airing_today')">Airing
+            today</button>
+          <button class="button--list sm:py-1 sm:px-3 px-1 hover:bg-slate-700 "
+            (click)="getMovieData(1,'on_the_air')">On the air</button>
+        </div>
 
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
-      </div>
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
-      </div>
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
-      </div>
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
-      </div>
-      <div class="group/film text-center w-[80%] xl:w-[170px] mb-5 overflow-hidden">
-        <a routerLink="/movie">
-          <div class=" h-[254px] relative shrink-0  rounded-[10px] overflow-hidden">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg"
-              class="object-cover w-full h-full group-hover/film:scale-125 duration-300 transition-all" alt="">
-            <div
-              class=" absolute bottom-0  bg-gradient-to-b from-transparent to-black  w-full h-[90px] group-hover/film:to-slate-700 transition-all">
-            </div>
-            <span class="font-Poppins font-normal text-base absolute bottom-3.5 right-1/2 translate-x-1/2 w-full ">
-              episode
-              1022</span>
-          </div>
-          <ul class="flex items-center gap-x-2 mb-2.5 pt-5 ml-2">
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Active</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-            <li class="py-[1px] px-2.5 bg-gray-500 rounded-full text-[10px]">Movie</li>
-
-          </ul>
-          <h2 class="font-Poppins font-semibold text-base mt-0">One piece</h2>
-        </a>
-      </div>
-
+      </ng-template>
     </div>
 
+
+    <!-- list -->
+    <section>
+      <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px]">
+        <app-movie-card *ngFor="let m of results|paginate: { id: 'custom-pagination',
+        itemsPerPage: paginationConfig.itemsPerPage,
+        currentPage: paginationConfig.currentPage,
+        totalItems: paginationConfig.totalItems }" [movieCards]="m"></app-movie-card>
+      </ul>
+
+    </section>
+    <pagination-controls id="custom-pagination" class="flex justify-center mt-[50px] gap-x-2 text-slate-50"
+      (pageChange)="onPageChange($event)">
+    </pagination-controls>
+
   </main>
-  <aside class="md:basis-2/6 flex flex-col gap-y-3">
-    <h1 class="font-Poppins font-bold text-2xl border-indigo-500 border-l-4 pl-4 mb-5">Related movies</h1>
-
-    <app-post-card></app-post-card>
-    <app-post-card></app-post-card>
-    <app-post-card></app-post-card>
-    <app-post-card></app-post-card>
-  </aside>
-
 </section>

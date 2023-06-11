@@ -20,6 +20,7 @@ export class BannerComponent implements OnInit {
   getTrendingData() {
     this.http.getTrendingApi('day').subscribe((data) => {
       this.slides = data.results.slice(0, 6);
+      console.log(data);
     });
   }
   // get genre movie

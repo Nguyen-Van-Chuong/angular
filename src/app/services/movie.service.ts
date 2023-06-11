@@ -9,10 +9,15 @@ import apiConfig from '../api/config';
 })
 export class MovieService {
   constructor(private http: HttpClient) {}
-
+  private type: string = 'movie';
+  setApiUrl(url: string) {
+    this.type = url;
+  }
   // get [popular top_rated upcoming] movie
-  getMovieApi(movieType: string): Observable<any> {
-    const data = this.http.get(`${apiConfig.baseUrl}movie/${movieType}`);
+  getMovieApi(page: number, movieType: string): Observable<any> {
+    const data = this.http.get(
+      `${apiConfig.baseUrl}${this.type}/${movieType}?page=${page}`
+    );
     return data;
   }
   // get trending list
@@ -28,6 +33,21 @@ export class MovieService {
   // get movie detail
   getMovieDetailApi(id: any): Observable<any> {
     const data = this.http.get(`${apiConfig.baseUrl}/movie/${id}`);
+    return data;
+  }
+  // get reviews
+  getReviewsApi(id: number): Observable<any> {
+    const data = this.http.get(`${apiConfig.baseUrl}movie/${id}/reviews`);
+    return data;
+  }
+  // get image api original
+  getImageOriginal(url: string): Observable<any> {
+    const data = this.http.get(`${apiConfig.originalImage}${url}`);
+    return data;
+  }
+  // get tv deltail
+  getTvApi(id: number): Observable<any> {
+    const data = this.http.get(`${apiConfig.baseUrl}/tv/${id}`);
     return data;
   }
 }

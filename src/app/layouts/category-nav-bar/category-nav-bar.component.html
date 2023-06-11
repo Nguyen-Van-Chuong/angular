@@ -3,14 +3,21 @@
     <div class="logo md:mr-[90px]">
       <a href="/" class="text-3xl font-bold">Anonime</a>
     </div>
-    <ul class="md:flex justify-start items-center hidden">
+    <ul class="md:flex justify-start items-center hidden gap-x-8">
       <li>
-        <a routerLink="/home" routerLinkActive="active"
-          class="text text-[#868686] font-normal leading-8 mr-8 active">Home</a>
+        <a routerLink="/home" routerLinkActive="active" class="text text-[#868686] font-normal leading-8">Home</a>
       </li>
       <li>
-        <a routerLink="/movie-list" routerLinkActive="active" class="text text-[#868686] font-normal leading-8">List
-          anime</a>
+        <a (click)="navigateToMovieList('movies')" routerLink="movie-list" routerLinkActive="active"
+          class="text text-[#868686] font-normal leading-8">Movies</a>
+      </li>
+      <li>
+        <a (click)="navigateToMovieList('tv-series')" routerLink="tv-list" routerLinkActive="active"
+          class="text text-[#868686] font-normal leading-8">TV
+          series</a>
+      </li>
+      <li>
+        <a routerLink="#" routerLinkActive="active" class="text text-[#868686] font-normal leading-8">Search</a>
       </li>
     </ul>
   </div>
@@ -34,7 +41,7 @@
           </svg>
         </div>
         <input type="text" id="simple-search"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search" required>
       </div>
       <button type="submit"

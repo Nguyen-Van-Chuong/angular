@@ -1,45 +1,46 @@
-<section class="flex px-4 pt-28 lg:container">
-  <section class="md:basis-4/6 ">
-    <h1 class="font-Inter font-semibold text-3xl mb-8">{{product.title}}</h1>
-    <div class="mb-10 md:w-[90%] w-full">
-      <img src="https://image.tmdb.org/t/p/original/{{product.backdrop_path }}"
-        class="rounded-lg object-cover w-[80%]  h-[250px] md:h-[472px] mr-8" alt="">
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<section
+  class="relative bg-cover bg-center pt-[100px] mb-[200px] sm:pt-[170px] bg-fixed before:content-[''] before:absolute before:w-full before:h-full before:bg-[linear-gradient(to_top,rgb(0,0,0),rgba(0,0,0,0))] before:left-0 before:bottom-0"
+  [style]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + product.backdrop_path + ')'}">
+  <!-- Background content -->
+  <div class="relative lg:container s515:flex gap-12 z-[1] px-4">
+    <figure
+      class="group/poster relative sm:max-w-[300px] s515:max-h-[450px] overflow-hidden mb-[50px] before:absolute before:content[''] before:bottom-0 before:left-0  before:w-full before:bg-gradient-to-b before:from-transparent before:to-black">
+      <!-- Poster image -->
+      <img class="h-full w-full object-cover rounded-md"
+        src="https://image.tmdb.org/t/p/original{{product.poster_path}}" alt="{{product.title}}">
+      <button
+        class="absolute grid place-items-center text-[120px] inset-0 transform transition-all invisible group-hover/poster:visible">
+        <i class="fa-solid fa-play"></i>
+      </button>
+    </figure>
+    <div class="flex flex-col gap-y-4 sm:gap-y-6">
+      <h1
+        class="font-Inter font-bold text-left tracking-widest leading-[1] text-[clamp(1.75rem,0.22rem_+_3.85vw,3.75rem)]">
+        {{product.title || product.name}}
+      </h1>
+      <p
+        class="font-Inter font-normal text-[clamp(0.875rem,0.8057958477508651rem_+_0.34602076124567477vw,1.125rem)] text-[#868686]">
+        {{ product.overview }}
+      </p>
+      <div class="flex justify-start items-center flex-wrap">
+        <!-- circle progress -->
+        <circle-progress [percent]="product.vote_average * 10" [outerStrokeWidth]="5" [outerStrokeColor]="'#ff0000'"
+          [animation]="true" [animationDuration]="300" class="h-14 sm:h-16">
+        </circle-progress>
+        <!-- circle progress -->
+        <div class="bg-[#ff0000] rounded-2xl mr-2 flex-shrink-0" *ngFor="let g of product.genres">
 
-    </div>
-
-    <div class="flex mb-10">
-      <img src="https://image.tmdb.org/t/p/original/{{product.poster_path }}"
-        class="rounded-lg object-cover w-[80%] md:w-[270px] h-[379px] mr-8" alt="">
-      <div class="gap-y-3">
-        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl">Type :</h3>
-        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Tv</span>
-        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Status :</h3>
-        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Ongoing</span>
-        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Studios :</h3>
-        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Toei Animation</span>
-        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Duration :</h3>
-        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">24 Min.</span>
-        <h3 for="" class="font-Inter font-semibold text-sm md:text-xl mt-3">Genres :</h3>
-        <span class="font-Inter font-normal md:text-base text-sm text-[#868686] ">Action, Adventure, Fantasy</span>
+          <span class="pl-2 pr-2 text-xs sm:text-sm">{{ getGenreName(g.id) }}</span>
+        </div>
       </div>
     </div>
-    <div class="mb-10 pr-4">
-      <h1 class="font-Inter font-semibold text-xl mb-10">Sypnosis :</h1>
-      <p class="font-Inter font-normal text-base text-[#868686]">{{ product.overview }}</p>
-    </div>
-    <div>
-      <app-comment-list></app-comment-list>
-    </div>
-  </section>
-  <section class="basis-2/6 md:block hidden">
-    <h1 class="font-Inter font-semibold text-3xl mb-8">Popular anime</h1>
-    <div class="grid lg:grid-cols-2 grid-cols-1 lg:gap-3 gap-2">
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-    </div>
-  </section>
+  </div>
 </section>
-s
+<!-- comments -->
+<section class="lg:container px-4">
+  <h1 class="font-Inter font-bold text-2xl mb-[50px]">Review</h1>
+  <app-comment-list [reviews]="reviews"></app-comment-list>
+</section>
