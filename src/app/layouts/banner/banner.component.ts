@@ -18,14 +18,13 @@ export class BannerComponent implements OnInit {
 
   // get data trending
   getTrendingData() {
-    this.http.getTrendingApi('day').subscribe((data) => {
+    this.http.getTrendingApi('movie', 'day').subscribe((data) => {
       this.slides = data.results.slice(0, 6);
-      console.log(data);
     });
   }
   // get genre movie
   getGenreData() {
-    this.http.getGenreMovie().subscribe((data) => {
+    this.http.getGenre('movie').subscribe((data) => {
       this.genres = data.genres;
     });
   }
@@ -38,7 +37,7 @@ export class BannerComponent implements OnInit {
   slideConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
 

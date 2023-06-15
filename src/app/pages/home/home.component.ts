@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { delay } from 'rxjs';
-
 import { MovieService } from '../../services/movie.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -13,58 +11,37 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class HomeComponent implements OnInit {
   moviePopular: Movie[] = [];
   movieTrending: Movie[] = [];
-  loading: boolean = true;
-  constructor(
-    private service: MovieService,
-    private spinner: NgxSpinnerService
-  ) {
-    // this.spinner.show();
-  }
+  movieTrendingDay: Movie[] = [];
+  constructor(private service: MovieService) {}
   ngOnInit(): void {
-    this.showSpinner();
+    document.body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.service.getLoadingPage();
     this.getMovieData();
     this.getMovieTrendingData();
-    // const h = setTimeout(() => {
-    //   /** spinner ends after 5 seconds */
-    //   this.spinner.hide();
-    // }, 5000);
+    this.getMovieTrendingDayData();
   }
-  showSpinner() {
-    this.loading = true;
-    this.spinner.show();
-  }
-  // hideSpinner() {
-  //   this.spinner.hide();
-  // }
 
   // get movie data
   getMovieData() {
     this.service
-      .getMovieApi(1, 'top_rated')
+      .getTrendingApi('tv', 'day')
       .pipe(delay(2000))
       .subscribe((data) => {
         this.moviePopular = data.results.slice(0, 8);
-        // this.hideSpinner();
-        // this.checkLoading();
-        this.loading = false;
-        this.spinner.hide();
       });
   }
   // get movie trending
   getMovieTrendingData() {
     this.service
-      .getTrendingApi('week')
+      .getTrendingApi('movie', 'week')
       .pipe(delay(2000))
       .subscribe((data) => (this.movieTrending = data.results.slice(0, 8)));
-    // this.hideSpinner();
-    // this.checkLoading();
-    this.loading = false;
-    this.spinner.hide();
   }
-  // checkLoading() {
-  //   if (this.moviePopular.length > 0 && this.movieTrending.length > 0) {
-  //     this.loading = false; // Tắt trạng thái loading nếu đã nhận đủ dữ liệu
-  //     this.spinner.hide();
-  //   }
-  // }
+  // get movie trending
+  getMovieTrendingDayData() {
+    this.service
+      .getTrendingApi('movie', 'day')
+      .pipe(delay(2000))
+      .subscribe((data) => (this.movieTrendingDay = data.results.slice(0, 8)));
+  }
 }

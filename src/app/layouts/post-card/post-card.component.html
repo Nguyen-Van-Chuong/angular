@@ -18,10 +18,13 @@
 <div class="grid lg:gap-3 gap-2 md:grid-cols-4 grid-cols-2 ">
 
 
-  <a [routerLink]="['/movie-detail', c.id]" [title]="c.title" class="group/film relative overflow-hidden"
-    *ngFor="let  c of card">
-    <img class="w-full h-full lg:group-hover/film:scale-110 duration-300 transition-all"
-      src="https://image.tmdb.org/t/p/original/{{ c.backdrop_path }}" alt="{{c.title}}">
+  <a [routerLink]="['/'+type+'/movie-detail', c.id]" [title]="c.title" class="group/film relative overflow-hidden"
+    *ngFor="let c of card">
+    <div class="w-[311px] h-[174px]">
+      <img class="w-full h-full object-cover lg:group-hover/film:scale-110 duration-300 transition-all"
+        src="https://image.tmdb.org/t/p/original{{ c.backdrop_path?c.backdrop_path:c.poster_path }}"
+        alt="{{c.title || c.name || 'NO NAME'}}">
+    </div>
     <div class="absolute bottom-0 w-full h-[100px] text-white 
       bg-gradient-to-b from-transparent to-gray-900
       lg:group-hover/film:to-slate-700 
@@ -31,7 +34,8 @@
       <div class="line-clamp-1
           sm:mb-2 md:mb-1 lg:mb-3
           text-[14px] sm:text-[16px] md:text-[14px] lg:text-[16px] 
-          absolute bottom-4">{{c.title}}</div>
+          absolute bottom-4">
+        {{c.title || c.name }}</div>
       <div class="absolute bottom-1 left-1.5 right-1.5 
           sm:bottom-2 sm:left-3 sm:right-3 
           md:left-1.5 md:right-1.5 md:bottom-1 

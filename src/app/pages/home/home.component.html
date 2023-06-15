@@ -1,30 +1,36 @@
-<ngx-spinner bdColor="rgba(0, 0, 0, 1)" template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
-  *ngIf="loading;else content">
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
-<ng-template #content>
-  <!-- banner -->
-  <section class="mt-[-20px]">
-    <app-banner></app-banner>
-  </section>
-  <!-- banner -->
-
-  <!-- Popular anime -->
-  <section class="lg:container mt-[100px] mb-[100px]">
-    <h1 class="font-Inter font-semibold text-3xl mb-[50px] pt-2 uppercase">Popular anime</h1>
-    <section class="pl-2.5 pr-2.5 lg:gap-0">
-      <app-post-card [card]="moviePopular"></app-post-card>
-    </section>
-  </section>
-  <!-- Popular anime -->
-
-  <!-- slide trending -->
-  <div class="lg:container">
-    <h1 class="font-Poppins font-semibold text-3xl mt-8 mb-[50px] uppercase">Trending</h1>
-    <div class="text-right">
-      <a href="#" class="font-Poppins text-base text-right mr-3 cursor-pointer hover:border-b">See all</a>
-    </div>
-    <app-slide [slides]="movieTrending"></app-slide>
-
+<!-- banner -->
+<section class="mt-[-20px]">
+  <app-banner></app-banner>
+</section>
+<!-- banner -->
+<!-- slide trending -->
+<div class="lg:container">
+  <h1 class="font-Poppins font-semibold text-3xl mt-8 mb-[50px] uppercase">Trending</h1>
+  <div class="text-right">
+    <a href="#" class="font-Poppins text-base text-right mr-3 cursor-pointer hover:border-b">See all</a>
   </div>
-  <!-- slide trending -->
-</ng-template>
+  <app-slide [slides]="movieTrending" [type]="'movie'"></app-slide>
+</div>
+<!-- slide trending -->
+<!-- Popular anime -->
+<section class="lg:container mt-[100px] mb-[100px]">
+  <h1 class="font-Inter font-semibold text-3xl mb-[50px] pt-2 uppercase">Popular</h1>
+  <section class="pl-2.5 pr-2.5 lg:gap-0">
+    <app-post-card [card]="moviePopular" [type]="'tv'"></app-post-card>
+  </section>
+</section>
+<!-- Popular anime -->
+
+
+
+<!-- Popular anime -->
+<section class="lg:container mt-[100px] mb-[100px]">
+  <h1 class="font-Inter font-semibold text-3xl mb-[50px] pt-2 uppercase">Popular</h1>
+  <section class="pl-2.5 pr-2.5 lg:gap-0">
+    <app-post-card [card]="movieTrendingDay" [type]="'movie'"></app-post-card>
+  </section>
+</section>
+<!-- Popular anime -->

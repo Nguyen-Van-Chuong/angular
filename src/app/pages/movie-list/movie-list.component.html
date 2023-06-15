@@ -1,11 +1,11 @@
 <section class="md:flex pt-28 lg:container">
 
-  <main class="">
+  <main class="px-4">
     <div class="flex items-center sm:justify-between justify-around mb-[30px]">
       <h1
         class="font-Poppins font-bold text-[clamp(0.875rem,0.7rem_+_0.86vw,1.5rem)] border-indigo-500 border-l-4 pl-4 uppercase">
         List
-        {{segment == 'movie-list'? 'Movie':'TV series'}}
+        {{segment == 'movie'? 'Movie':'TV series'}}
         {{name.split('_').join(" ")}}</h1>
       <div class="flex  md:gap-3 gap-1 text-[clamp(0.5rem,0.396rem_+_0.511vw,0.875rem)]"
         *ngIf="segment == 'movie-list'; else tvList">
@@ -45,12 +45,12 @@
         <app-movie-card *ngFor="let m of results|paginate: { id: 'custom-pagination',
         itemsPerPage: paginationConfig.itemsPerPage,
         currentPage: paginationConfig.currentPage,
-        totalItems: paginationConfig.totalItems }" [movieCards]="m"></app-movie-card>
+        totalItems: paginationConfig.totalItems }" [movieCards]="m" [type]="segment"></app-movie-card>
       </ul>
 
     </section>
     <pagination-controls id="custom-pagination" class="flex justify-center mt-[50px] gap-x-2 text-slate-50"
-      (pageChange)="onPageChange($event)">
+      (pageChange)="onPageChange($event)" [responsive]="true">
     </pagination-controls>
 
   </main>

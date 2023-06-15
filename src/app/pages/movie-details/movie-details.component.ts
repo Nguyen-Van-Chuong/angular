@@ -4,6 +4,7 @@ import { Movie } from 'src/app/interfaces/movie.interface';
 import { MovieService } from 'src/app/services/movie.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { delay } from 'rxjs';
+import { TvService } from 'src/app/services/tv.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,40 +12,62 @@ import { delay } from 'rxjs';
   styleUrls: ['./movie-details.component.css'],
 })
 export class MovieDetailsComponent implements OnInit {
-  @Input() products!: any;
+  // @Input() products!: any;
 
-  product: any;
+  movie: any;
+  similar: any[] = [];
   genres: any[] = [];
   reviews: any[] = [];
+  casts: any[] = [];
 
   constructor(
     private http: MovieService,
-    private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private tvService: TvService,
+    private route: ActivatedRoute // private spinner: NgxSpinnerService
   ) {}
   ngOnInit(): void {
-    this.spinner.show();
+    document.body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.http.getLoadingPage();
+    const segments = this.route.snapshot.pathFromRoot;
 
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000);
-
-    const segments = this.route.snapshot.url;
     let id = +this.route.snapshot.params['id'];
-    if (segments[0].path == 'movie-list') {
-      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-      //Add 'implements OnInit' to the class.
+    if (segments[1].routeConfig?.path == 'movie') {
       this.getMovieDetailData(id);
       this.getGenreData();
-      this.getReviewsData(id);
-    } else {
+      this.getReviewsData(id, 'movie');
+      this.getCastData(id, 'movie');
+      this.getSimilarData(id, 'movie');
+    } else if (segments[1].routeConfig?.path == 'tv') {
       this.getTvDetailData(id);
+      this.getGenreTvData();
+      this.getReviewsData(id, 'tv');
+      this.getCastData(id, 'tv');
+      this.getSimilarData(id, 'tv');
+    } else {
+      this.getMovieDetailData(id);
+      this.getGenreData();
+      // this.getReviewsData(id);
     }
   }
+
   // get genre movie data
   getGenreData() {
     this.http
-      .getGenreMovie()
+      .getGenre('movie')
+      .pipe(delay(2000))
+      .subscribe((data) => {
+        this.genres = data.genres;
+      });
+  }
+  getSimilarData(id: number, type: string) {
+    this.http
+      .getSimilar(id, type)
+      .subscribe((data) => (this.similar = data.results.slice(0, 8)));
+  }
+  // get genre tv data
+  getGenreTvData() {
+    this.http
+      .getGenre('tv')
       .pipe(delay(2000))
       .subscribe((data) => {
         this.genres = data.genres;
@@ -57,23 +80,31 @@ export class MovieDetailsComponent implements OnInit {
   }
   // get detail data
   getMovieDetailData(id: any) {
-    this.http.getMovieDetailApi(id).subscribe((data) => {
-      this.product = data;
+    this.http.getMovieDetailApi(id, 'movie').subscribe((data) => {
+      this.movie = data;
     });
   }
   //get tv deltail
   getTvDetailData(id: any) {
-    this.http.getTvApi(id).subscribe((data) => {
-      this.product = data;
+    this.tvService.getTvApi(id).subscribe((data) => {
+      this.movie = data;
     });
   }
   // get reviews data
-  getReviewsData(id: number) {
-    this.http.getReviewsApi(id).subscribe((data) => {
+  getReviewsData(id: number, type: string) {
+    this.http.getReviewsApi(id, type).subscribe((data) => {
       this.reviews = data.results.map((result: any) => ({
         ...result,
         showFullContent: false,
       }));
+    });
+  }
+  // get cast
+  getCastData(id: number, type: string) {
+    this.http.getCast(id, type).subscribe((data) => {
+      this.casts = data.cast;
+      console.log(data.cast);
+      console.log(this.casts);
     });
   }
 }

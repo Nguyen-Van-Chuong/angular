@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, delay } from 'rxjs';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { MovieService } from 'src/app/services/movie.service';
 import { PaginationInstance } from 'ngx-pagination';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Movie } from 'src/app/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -18,35 +18,24 @@ export class MovieListComponent implements OnInit, OnDestroy {
     totalItems: 0, // Tổng số phần tử
     id: 'custom-pagination',
   };
-  constructor(
-    private http: MovieService,
-    private spinner: NgxSpinnerService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private http: MovieService, private route: ActivatedRoute) {}
   activeButton: string = '';
-  results: any;
+  results: Movie[] = [];
   name: string = '';
   title: string = '';
   api = '';
-  segment = '';
+  segment: any;
 
   ngOnInit(): void {
-    const segments = this.route.snapshot.url;
-    this.segment = segments[0].path;
-
+    this.http.getLoadingPage();
+    const segments: ActivatedRouteSnapshot[] = this.route.snapshot.pathFromRoot;
+    this.segment = segments[1].routeConfig?.path;
     this.getMovieData(this.paginationConfig.currentPage);
-  }
-
-  loadingPage() {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000);
   }
 
   getMovieData(page: number, type = 'popular') {
     this.activeButton = type;
-    this.loadingPage();
+    this.http.getLoadingPage();
     this.name = type;
     this.http
       .getMovieApi(page, type)
@@ -62,9 +51,5 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.getMovieData(page, this.name);
   }
 
-  ngOnDestroy(): void {
-    // if (this.movieSubscription) {
-    //   this.movieSubscription.unsubscribe();
-    // }w
-  }
+  ngOnDestroy(): void {}
 }

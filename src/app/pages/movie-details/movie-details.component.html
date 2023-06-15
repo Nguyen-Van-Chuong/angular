@@ -3,14 +3,15 @@
 </ngx-spinner>
 <section
   class="relative bg-cover bg-center pt-[100px] mb-[200px] sm:pt-[170px] bg-fixed before:content-[''] before:absolute before:w-full before:h-full before:bg-[linear-gradient(to_top,rgb(0,0,0),rgba(0,0,0,0))] before:left-0 before:bottom-0"
-  [style]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + product.backdrop_path + ')'}">
+  [style]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'}">
   <!-- Background content -->
   <div class="relative lg:container s515:flex gap-12 z-[1] px-4">
     <figure
       class="group/poster relative sm:max-w-[300px] s515:max-h-[450px] overflow-hidden mb-[50px] before:absolute before:content[''] before:bottom-0 before:left-0  before:w-full before:bg-gradient-to-b before:from-transparent before:to-black">
       <!-- Poster image -->
       <img class="h-full w-full object-cover rounded-md"
-        src="https://image.tmdb.org/t/p/original{{product.poster_path}}" alt="{{product.title}}">
+        src="https://image.tmdb.org/t/p/original{{movie.poster_path ?movie.poster_path:movie.backdrop_path}}"
+        alt="{{movie.title}}">
       <button
         class="absolute grid place-items-center text-[120px] inset-0 transform transition-all invisible group-hover/poster:visible">
         <i class="fa-solid fa-play"></i>
@@ -19,26 +20,39 @@
     <div class="flex flex-col gap-y-4 sm:gap-y-6">
       <h1
         class="font-Inter font-bold text-left tracking-widest leading-[1] text-[clamp(1.75rem,0.22rem_+_3.85vw,3.75rem)]">
-        {{product.title || product.name}}
+        {{movie.title || movie.name}}
       </h1>
       <p
-        class="font-Inter font-normal text-[clamp(0.875rem,0.8057958477508651rem_+_0.34602076124567477vw,1.125rem)] text-[#868686]">
-        {{ product.overview }}
+        class="font-Inter font-normal text-[clamp(0.875rem,0.8057958477508651rem_+_0.34602076124567477vw,1.125rem)] text-[#ececec]">
+        {{ movie.overview }}
       </p>
       <div class="flex justify-start items-center flex-wrap">
         <!-- circle progress -->
-        <circle-progress [percent]="product.vote_average * 10" [outerStrokeWidth]="5" [outerStrokeColor]="'#ff0000'"
+        <circle-progress [percent]="movie.vote_average * 10" [outerStrokeWidth]="5" [outerStrokeColor]="'#ff0000'"
           [animation]="true" [animationDuration]="300" class="h-14 sm:h-16">
         </circle-progress>
         <!-- circle progress -->
-        <div class="bg-[#ff0000] rounded-2xl mr-2 flex-shrink-0" *ngFor="let g of product.genres">
-
+        <div class="bg-[#ff0000] rounded-2xl mr-2 flex-shrink-0" *ngFor="let g of movie.genres">
           <span class="pl-2 pr-2 text-xs sm:text-sm">{{ getGenreName(g.id) }}</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- cast -->
+<section class="lg:container pb-[50px]">
+  <h1 class="font-Inter font-semibold text-3xl pt-2 uppercase">Casts</h1>
+
+  <app-slide [slides]="casts"></app-slide>
+</section>
+<!-- cast -->
+<!-- similar -->
+<section class="lg:container pb-[50px]">
+  <h1 class="font-Inter font-semibold text-3xl pt-2 uppercase">Similar movie</h1>
+  <app-post-card [card]="similar" [type]="'movie'"></app-post-card>
+</section>
+<!-- similar -->
+
 <!-- comments -->
 <section class="lg:container px-4">
   <h1 class="font-Inter font-bold text-2xl mb-[50px]">Review</h1>

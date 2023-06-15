@@ -8,15 +8,17 @@ import { Movie } from 'src/app/interfaces/movie.interface';
 })
 export class SlideComponent {
   @Input() slides: any[] = [];
+  @Input() type!: string;
 
   slideConfig = {
     slidesToShow: 4,
     slidesToScroll: 4,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+    infinite: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
     variableWidth: false,
     prevArrow:
-      '<div class="absolute top-1/2 mt-[-15px] left-[-30px] text-2xl"><i class="fa-sharp fa-solid fa-arrow-left"></i></div>',
+      '<div class="absolute top-1/2 mt-[-15px] left-[-30px] text-2xl"><i class="fa-sharp fa-solid fa-arrow-left z-[2]"></i></div>',
     nextArrow:
       '<div class="absolute top-1/2 mt-[-15px] right-[-30px] text-2xl"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>',
 
@@ -26,7 +28,7 @@ export class SlideComponent {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
           dots: true,
           arrows: false,
         },

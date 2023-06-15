@@ -8,6 +8,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 export class MovieCardComponent implements OnInit {
   @Input() movieCards: any;
   @Input() totalPages: any;
+  @Input() type!: string;
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }

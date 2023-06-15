@@ -1,10 +1,12 @@
 <li>
   <div class="h-full flex flex-col justify-between group/film">
 
-    <a [title]="movieCards.title || movieCards.name" routerLink="/movie-detail/{{movieCards.id}}">
+    <a [title]="movieCards.title || movieCards.name" [routerLink]="'/'+type+'/movie-detail/'+movieCards.id">
 
       <figure class="relative aspect-[2/3] rounded-md overflow-hidden mb-5 ">
-        <img src="https://image.tmdb.org/t/p/original{{movieCards.poster_path}}"
+        <!-- <img src="https://image.tmdb.org/t/p/original{{movieCards.poster_path}}" -->
+        <img
+          src="{{movieCards.poster_path ?'https://image.tmdb.org/t/p/original'+movieCards.poster_path:'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'}}"
           class="h-full w-full object-cover group-hover/film:scale-125 duration-300 transition-all"
           alt="Sonic the Hedgehog 2 movie poster">
         <div class="absolute bottom-0 w-full h-[300px] text-white 
@@ -18,7 +20,7 @@
     </a>
 
     <div class="flex justify-between items-center gap-5 mb-2">
-      <a routerLink="/movie-detail/{{movieCards.id}}">
+      <a [routerLink]="'/'+type+'/movie-detail/'+movieCards.id">
         <h3 class="text-base font-bold group-hover/film:text-yellow-400"> {{movieCards.title || movieCards.name}}</h3>
       </a>
 

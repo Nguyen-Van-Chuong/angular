@@ -1,23 +1,33 @@
 <section class="sm:px-4 py-2">
-  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" class="relative">
-    <div ngxSlickItem *ngFor="let slide of slides" class="slide gap-x-1">
-      <a [title]="slide.title" routerLink="/movie-detail/{{slide.id}}">
-        <div class="h-[200px] sm:h-[150px] sm:w-[300px] overflow-hidden">
-          <img src="https://image.tmdb.org/t/p/original/{{ slide.backdrop_path }}"
-            class=" w-full h-full object-cover transition transform duration-500 hover:scale-[1.08] hover:opacity-30"
-            alt="" width="100%">
-        </div>
-        <!-- <div class="h-[150px] sm:w-[350px]  transition transform duration-500 hover:scale-125 mr-2">
-        </div> -->
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+      <a *ngIf="slide.backdrop_path" [title]="slide.title" routerLink="/{{type}}/movie-detail/{{slide.id}}">
+        <img
+          src="{{ slide.backdrop_path?'https://image.tmdb.org/t/p/original'+slide.backdrop_path:'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'}}"
+          [alt]="slide.title" class="transform duration-500 hover:scale-[1.08] hover:opacity-30" width="100%">
+      </a>
+      <!-- {{movieCards.poster_path ?'https://image.tmdb.org/t/p/original'+movieCards.poster_path:'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'}} -->
+      <a *ngIf="slide.profile_path" [title]="slide.title" routerLink="#" class="relative">
+        <img
+          src="{{ slide.profile_path?'https://image.tmdb.org/t/p/original'+slide.profile_path:'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'}}"
+          [alt]="slide.original_name" class="transform duration-500 hover:scale-[1.08] hover:opacity-30" width="100%">
+        <h2 class="absolute z-10 bottom-4 left-3">
+          {{slide.original_name}}
+        </h2>
       </a>
     </div>
   </ngx-slick-carousel>
-
 </section>
-<!-- 
-        <a href="#">
-        <div class="h-[150px] sm:w-[350px]  transition transform duration-500 hover:scale-125 mr-2">
-          <img src="{{ slide.img }}" class="object-cover w-full h-full box-content" alt="" width="100%">
-        </div>
-      </a>
- -->
+
+
+<!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" class="relative">
+  <div ngxSlickItem *ngFor="let slide of slides" class="slide gap-x-1">
+    <a [title]="slide.title" routerLink="/movie-detail/{{slide.id}}">
+      <div class="h-[200px] sm:h-[150px] sm:w-[300px] overflow-hidden">
+        <img src="https://image.tmdb.org/t/p/original/{{ slide.backdrop_path }}"
+          class=" w-full h-full object-cover transition transform duration-500 hover:scale-[1.08] hover:opacity-30"
+          alt="" width="100%">
+      </div>
+    </a>
+  </div>
+</ngx-slick-carousel> -->

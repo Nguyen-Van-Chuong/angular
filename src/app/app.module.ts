@@ -24,6 +24,7 @@ import { SlideComponent } from './layouts/slide/slide.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 import { MovieCardComponent } from './layouts/movie-card/movie-card.component';
+import { SearchComponent } from './layouts/search/search.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MovieCardComponent } from './layouts/movie-card/movie-card.component';
     MovieListComponent,
     CommentFormComponent,
     MovieCardComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
