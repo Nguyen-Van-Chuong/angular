@@ -1,7 +1,8 @@
 <section class="sm:px-4 py-2">
   <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-      <a *ngIf="slide.backdrop_path" [title]="slide.title" routerLink="/{{type}}/movie-detail/{{slide.id}}">
+      <a *ngIf="slide.backdrop_path" [title]="slide.title" class="overflow-hidden"
+        routerLink="/{{type}}/movie-detail/{{slide.id}}">
         <img
           src="{{ slide.backdrop_path?'https://image.tmdb.org/t/p/original'+slide.backdrop_path:'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'}}"
           [alt]="slide.title" class="transform duration-500 hover:scale-[1.08] hover:opacity-30" width="100%">

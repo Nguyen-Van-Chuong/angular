@@ -18,7 +18,7 @@
 <div class="grid lg:gap-3 gap-2 md:grid-cols-4 grid-cols-2 ">
 
 
-  <a [routerLink]="['/'+type+'/movie-detail', c.id]" [title]="c.title" class="group/film relative overflow-hidden"
+  <a [href]="['/'+type+'/movie-detail/'+ c.id]" [title]="c.title" class="group/film relative overflow-hidden"
     *ngFor="let c of card">
     <div class="w-[311px] h-[174px]">
       <img class="w-full h-full object-cover lg:group-hover/film:scale-110 duration-300 transition-all"

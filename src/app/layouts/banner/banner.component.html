@@ -25,7 +25,7 @@
           <span class="pl-2 pr-2 text-xs sm:text-sm">{{ getGenreName(g) }}</span>
         </div>
       </div>
-      <a [routerLink]="['/movie-detail', slide.id]"
+      <a [routerLink]="['/'+type+'/movie-detail', slide.id]"
         class="font-Poppins font-medium text-center text-base py-2 px-[22px] bg-[#ff0000] rounded relative inline-block mt-5">
         <i class="fa-solid fa-play mr-2"></i>
         <span>Watch now</span>

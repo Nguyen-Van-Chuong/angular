@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -8,6 +8,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./banner.component.css'],
 })
 export class BannerComponent implements OnInit {
+  @Input() type: string = '';
   constructor(private http: MovieService) {}
   ngOnInit(): void {
     this.getTrendingData();
