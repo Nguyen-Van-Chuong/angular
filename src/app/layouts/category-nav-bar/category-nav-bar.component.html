@@ -24,7 +24,8 @@
           series</a>
       </li>
       <li>
-        <a routerLink="#" routerLinkActive="active" class="text text-[#868686] font-normal leading-8">Search</a>
+        <a [routerLink]="'/search'" routerLinkActive="active"
+          class="text text-[#868686] font-normal leading-8">Search</a>
       </li>
     </ul>
   </div>
@@ -36,7 +37,7 @@
   </div>
 
 
-  <a href="/search">
+  <a [routerLink]="'/search'">
     <i class="fa-solid fa-magnifying-glass w-7"></i>
   </a>
 
