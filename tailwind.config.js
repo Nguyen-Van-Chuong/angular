@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       fontFamily: {
         Inter: ['Inter', 'sans-serif'],
-        Poppins: ['Poppins', 'sans-serif']
+        Poppins: ['Poppins', 'sans-serif'],
+        cine: ['Racing Sans One', "cursive"]
       },
       container: {
         center: true,

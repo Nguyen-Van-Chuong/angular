@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,5 +11,5 @@ font-family: 'Inter', sans-serif;
 font-family: 'Poppins', sans-serif;*/
 
 .button--list {
-  @apply bg-slate-600 transition-all rounded-sm font-Inter font-semibold uppercase;
+  @apply font-semibold uppercase transition-all rounded-sm bg-slate-600 font-Inter;
 }
