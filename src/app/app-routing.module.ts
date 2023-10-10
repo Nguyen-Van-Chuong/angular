@@ -16,7 +16,7 @@ import { SearchComponent } from './layouts/search/search.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, title: 'Home' },
-  { path: 'search', component: SearchComponent, title: '' },
+  { path: 'search/:query', component: SearchComponent, title: 'Search' },
   {
     path: 'movie',
     children: [

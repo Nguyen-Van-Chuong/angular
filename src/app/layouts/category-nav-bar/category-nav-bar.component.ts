@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { delay } from 'rxjs';
 import { MovieService } from 'src/app/services/movie.service';
@@ -13,6 +14,8 @@ export class CategoryNavBarComponent {
   apiUrl!: string;
   genresMovie: any[] = [];
   genresTv: any[] = [];
+  search = new FormControl('');
+
   ngOnInit(): void {
     this.getGenreMovieData();
     this.getGenreTvData();

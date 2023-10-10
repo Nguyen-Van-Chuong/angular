@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { MovieService } from 'src/app/services/movie.service';
@@ -10,7 +11,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent {
-  constructor(private http: MovieService) {}
+  constructor(private http: MovieService, private route: ActivatedRoute) {}
   paginationConfig: PaginationInstance = {
     itemsPerPage: 20, // Số phần tử hiển thị trên mỗi trang
     currentPage: 1, // Trang hiện tại
@@ -24,11 +25,14 @@ export class SearchComponent {
   search = new FormGroup({
     title: new FormControl(''),
   });
-  ngOnInit(): void {}
-  onSubmit() {
-    this.key = this.search.value.title;
-    this.getMovieData('movie', this.key);
+  ngOnInit(): void {
+    let query = this.route.snapshot.params['query'];
+    this.getMovieData('movie', query);
   }
+  // onSubmit() {
+  //   this.key = this.search.value.title;
+  //   this.getMovieData('movie', this.key);
+  // }
   getMovieData(type: string, name: string) {
     this.http.getSearchApi(this.page, type, name).subscribe((data) => {
       this.results = data.results;
